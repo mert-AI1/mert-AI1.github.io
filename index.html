@@ -11,177 +11,92 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div class="preloader" id="preloader">
-    <div class="preloader-mark">⚖</div>
-    <div class="preloader-name">BAHAR SELÇUK</div>
-    <div class="preloader-line"><span></span></div>
+ <style>
+#password-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #0d0b0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+
+.password-box {
+  width: 100%;
+  max-width: 380px;
+  padding: 40px 28px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(20,17,20,.95);
+  border-radius: 16px;
+}
+
+.password-box h2 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.password-box p {
+  color: #aaa;
+  margin-bottom: 24px;
+}
+
+.password-box input {
+  width: 100%;
+  padding: 14px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background: #111;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.password-box button {
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#password-error {
+  color: #d88;
+  margin-top: 12px;
+  display: none;
+}
+</style>
+
+<div id="password-screen">
+  <div class="password-box">
+    <h2>Özel Erişim</h2>
+    <p>Siteye giriş yapmak için şifreyi giriniz.</p>
+
+    <input type="password" id="site-password" placeholder="Şifre">
+    <button onclick="checkSitePassword()">Giriş Yap</button>
+
+    <div id="password-error">Şifre yanlış.</div>
   </div>
-  <div class="noise"></div>
-  <div class="cursor-glow"></div>
+</div>
 
-  <header class="site-header">
-    <a class="brand" href="#anasayfa" aria-label="Bahar Selçuk ana sayfa">
-      <span class="brand-mark">⚖</span>
-      <span>Bahar Selçuk</span>
-    </a> 
-    <button class="menu-toggle" aria-label="Menüyü aç/kapat"><span></span><span></span></button>
-    <nav class="nav">
-      <a href="#anasayfa">Ana Sayfa</a>
-      <a href="#hakkinda">Hakkında</a>
-      <a href="#hizmetler">Hizmetler</a>
-      <a href="#online">Online Danışmanlık</a><a href="#iletisim">İletişim</a>
-    </nav>
-  </header>
+<script>
+  function checkSitePassword() {
+  const password = document.getElementById("site-password").value;
 
-  <main>
-    <section class="hero" id="anasayfa">
-      <div class="hero-orbit orbit-one"></div>
-      <div class="hero-orbit orbit-two"></div>
-      <div class="hero-light light-a"></div>
-      <div class="hero-light light-b"></div>
-      <div class="hero-copy reveal">
-        <div class="eyebrow"><span></span> HUKUK &amp; DANIŞMANLIK <span></span></div>
-        <h1>Bahar <em>Selçuk</em></h1>
-        <div class="role">AVUKAT</div>
-        <p>“Hukuk, adaletin en güçlü teminatıdır.”</p>
-        <div class="hero-actions">
-          <a class="glow-btn whatsapp" href="https://wa.me/905549313535" target="_blank" rel="noopener">
-            <span class="btn-icon">◉</span><span><b>WhatsApp</b><small>Mesaj Gönder</small></span>
-          </a>
-          <a class="glow-btn phone" href="tel:+905549313535">
-            <span class="btn-icon">⌕</span><span><b>Telefon</b><small>+90 554 931 35 35</small></span>
-          </a>
-          <a class="glow-btn mail" href="mailto:"av.baharselcuk@gmail.com>
-            <span class="btn-icon">✉</span><span><b>E-Posta</b><small>Mesaj Gönder</small></span>
-          </a>
-        </div>
-      </div>
-      <div class="hero-portrait reveal reveal-right"> 
-        <div class="portrait-frame">
-          <img src="bahar-portre.jpg"alt="Bahar Selçuk">
-          <div class="portrait-ring"></div>
-          <div class="portrait-tag">ADALET<br><span>GÜVEN • ÇÖZÜM</span></div>
-        </div>
-      </div>
-      <div class="scroll-hint">AŞAĞI KAYDIR <span>↓</span></div>
-    </section>
+  if (password === "Mert0216") {
+    document.getElementById("password-screen").style.display = "none";
+    sessionStorage.setItem("siteAccess", "1");
+  } else {
+    document.getElementById("password-error").style.display = "block";
+  }
+}
 
-    <section class="intro section" id="hakkinda">
-      <div class="section-number">01</div>
-      <div class="intro-grid about-grid">
-        <div class="reveal about-lead">
-          <p class="eyebrow">HAKKINDA</p>
-          <h2>Tecrübe, erişilebilirlik ve<br><em>önleyici hukuk.</em></h2>
-          <div class="about-facts">
-            <div><span>01</span><b>Atatürk Üniversitesi</b><small>Hukuk Fakültesi</small></div>
-            <div><span>02</span><b>İzmir &amp; Didim</b><small>Ofis ve danışmanlık</small></div>
-            <div><span>03</span><b>Online Danışmanlık</b><small>Yurt dışındaki müvekkiller için</small></div>
-          </div>
-        </div>
-        <div class="intro-text about-copy reveal reveal-delay">
-          <p><strong>Atatürk Üniversitesi Hukuk Fakültesi mezunu Av. Bahar Selçuk</strong>, avukatlık mesleğine Ege'nin yoğun hukuki merkezlerinden İzmir'de, İzmir Barosu'na kayıtlı olarak başlamış ve burada dava tecrübesi edinmiştir.</p>
-          <p>Kariyerine günümüzde <strong>Aydın Barosu'na kayıtlı</strong> olarak devam etmekte; çalışmalarını Didim ve İzmir ofisleri üzerinden yürüterek müvekkillerine geniş kapsamlı hukuki danışmanlık ve dava takibi hizmeti sunmaktadır.</p>
-          <p>Sahip olduğu çifte vatandaşlık sayesinde, klasik avukatlık kalıplarını aşan bir yaklaşımla, yurt dışındaki müvekkillerinin Türkiye'deki hukuki ihtiyaçları için mesafeleri ortadan kaldıran güçlü bir <strong>Online Danışmanlık</strong> altyapısıyla hizmet sunarak, hukuki yol haritasının mümkün olduğunca dava öncesinde netleştirilmesine odaklanmaktadır.</p>
-          <p>Bununla birlikte, çifte vatandaşlık ve aktif pasaportun sağladığı seyahat esnekliği sayesinde, dosyanın niteliğine ve gerektiğinde müvekkilin talebine göre Avrupa'nın farklı noktalarında yüz yüze hukuki danışmanlık sağlama imkânına sahiptir.</p>
-          <p>Özellikle Avrupa'da yaşayan vatandaşlarımızın Türkiye'deki hukuki süreçleri <em>(miras, boşanma, tanıma/tenfiz)</em> ile Didim-İzmir hattında yatırım yapan yerli ve yabancı kişilerin hukuki güvenliği <em>(gayrimenkul ve vatandaşlık)</em> başta olmak üzere; şeffaf, ulaşılabilir ve sonuç odaklı bir avukatlık pratiği yürütmektedir.</p>
-          <p>Önleyici hukuk tedbirlerinin ve dürüst bilgilendirmenin, sorunlar büyümeden atılacak doğru adımlar ve başarılı bir hukuki sürecin temeli olduğuna inanmaktadır.</p>
-          <div class="signature">Bahar Selçuk <span>Avukat</span></div>
-        </div>
-      </div>
-      <div class="principles">
-        <div class="principle reveal"><span>01</span><b>Güvenilir</b><small>Şeffaf iletişim</small></div>
-        <div class="principle reveal reveal-delay"><span>02</span><b>Profesyonel</b><small>Özenli takip</small></div>
-        <div class="principle reveal reveal-delay-2"><span>03</span><b>Çözüm Odaklı</b><small>Somut adımlar</small></div>
-      </div>
-    </section>
-
-    
-<section class="online-section reveal" id="online">
-  <div class="section-kicker">ONLINE HUKUKİ DANIŞMANLIK</div>
-  <h2>Mesafeler hukuki desteğe engel değil.</h2>
-  <p class="section-lead">Türkiye'deki hukuki ihtiyaçlarınız için bulunduğunuz yerden ulaşabileceğiniz, planlı ve şeffaf bir danışmanlık süreci.</p>
-  <div class="process-grid">
-    <article class="process-card"><span>01</span><h3>Başvuru</h3><p>WhatsApp, telefon veya e-posta üzerinden konu ve belgeler paylaşılır.</p></article>
-    <article class="process-card"><span>02</span><h3>Online Görüşme</h3><p>Dosyanın niteliğine göre çevrim içi görüşme planlanır ve ihtiyaçlarınız değerlendirilir.</p></article>
-    <article class="process-card"><span>03</span><h3>Hukuki Yol Haritası</h3><p>Atılabilecek adımlar, gerekli belgeler ve izlenecek hukuki süreç açık şekilde aktarılır.</p></article>
-  </div>
-</section>
-
-<section class="international-section reveal">
-  <div class="international-copy"><div class="section-kicker">YURT DIŞINDAN TÜRKİYE'YE</div><h2>Türkiye'deki hukuki süreçleriniz için yanınızda.</h2><p>Özellikle Avrupa'da yaşayan vatandaşlarımızın Türkiye'deki miras, boşanma, tanıma ve tenfiz süreçleri ile Didim–İzmir hattındaki gayrimenkul ve vatandaşlık işlemlerinde hukuki danışmanlık ve dava takibi.</p></div>
-  <div class="international-points"><div>⚖ <strong>Miras</strong><small>Türkiye'deki miras süreçleri</small></div><div>⚖ <strong>Boşanma</strong><small>Tanıma ve tenfiz süreçleri</small></div><div>⚖ <strong>Gayrimenkul</strong><small>Alım, satış ve hukuki güvenlik</small></div><div>⚖ <strong>Vatandaşlık</strong><small>Hukuki süreç ve danışmanlık</small></div></div>
-</section>
-
-<section class="services section" id="hizmetler">
-      <div class="section-number">02</div>
-      <div class="section-head reveal">
-        <p class="eyebrow">UZMANLIK ALANLARI</p>
-        <h2>Hizmet <em>Alanlarımız</em></h2>
-      </div>
-      <div class="services-grid reveal-group">
-        <article class="service reveal"><span class="service-no">01</span><span class="service-icon">⚖</span><h3>Ceza Hukuku</h3><p>Ceza soruşturma ve davalarında hukuki takip.</p></article>
-        <article class="service reveal reveal-delay"><span class="service-no">02</span><span class="service-icon">♧</span><h3>Aile ve Boşanma Hukuku</h3><p>Boşanma, velayet, nafaka ve aile uyuşmazlıkları.</p></article>
-        <article class="service reveal"><span class="service-no">03</span><span class="service-icon">▣</span><h3>İş Hukuku</h3><p>İşçi ve işveren ilişkilerine dair hukuki danışmanlık.</p></article>
-        <article class="service reveal reveal-delay"><span class="service-no">04</span><span class="service-icon">⌂</span><h3>Gayrimenkul Hukuku</h3><p>Taşınmaz işlemleri ve uyuşmazlıkların takibi.</p></article>
-        <article class="service reveal"><span class="service-no">05</span><span class="service-icon">◈</span><h3>Ticaret Hukuku</h3><p>Ticari ilişkiler, sözleşmeler ve uyuşmazlıklar.</p></article>
-        <article class="service reveal reveal-delay"><span class="service-no">06</span><span class="service-icon">▤</span><h3>İcra ve İflas Hukuku</h3><p>Alacakların takibi ve icra süreçlerinin yönetimi.</p></article>
-        <article class="service reveal"><span class="service-no">07</span><span class="service-icon">▧</span><h3>Sözleşmeler ve Hukuki Danışmanlık</h3><p>Sözleşme hazırlama, inceleme ve risk analizi.</p></article>
-        <article class="service reveal reveal-delay"><span class="service-no">08</span><span class="service-icon">⚒</span><h3>Dava ve Uyuşmazlık Takibi</h3><p>Dava süreçlerinin baştan sona koordinasyonu.</p></article>
-      </div>
-    </section>
-
-    <section class="visual-break">
-      <div class="visual-copy reveal">
-        <span>“</span>
-        <h2>Adalet,<br><em>her zaman</em><br>bir umuttur...</h2>
-      </div>
-      <img src="assets/gavel.jpg" alt="Hukuk ve adalet teması">
-    </section>
-
-    <section class="offices section" id="iletisim">
-      <div class="section-number">03</div>
-      <div class="section-head reveal">
-        <p class="eyebrow">OFİSLERİMİZ</p>
-        <h2>Size <em>yakınız.</em></h2>
-      </div>
-      <div class="office-grid">
-        <article class="office reveal">
-          <img src="assets/izmir-ofis.jpg" alt="İzmir">
-          <div class="office-body"><span class="city">İZMİR</span><h3>Alsancak Ofis</h3><p>Alsancak Mah. 1453 Sk. No:12<br>Konak / İzmir</p><a href="https://www.google.com/maps/search/?api=1&query=Alsancak+Mah.+1453+Sk.+No%3A12+Konak+Izmir" target="_blank" rel="noopener">Haritada Gör →</a></div>
-        </article>
-        <article class="office reveal reveal-delay">
-          <img src="assets/didim-ofis.jpg" alt="Didim">
-          <div class="office-body"><span class="city">AYDIN / DİDİM</span><h3>Didim Ofis</h3><p>Çamlık Mah. Gökuman Caddesi<br>Begüm Apt. 19/B<br>Didim / Aydın</p><a href="https://www.google.com/maps/search/?api=1&query=Camlik+Mah.+Gokuman+Caddesi+Begum+Apt.+19%2FB+Didim+Aydin" target="_blank" rel="noopener">Haritada Gör →</a></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="contact section">
-      <div class="contact-card reveal">
-        <div>
-          <p class="eyebrow">İLETİŞİME GEÇİN</p>
-          <h2>Hukuki sürecinizi<br><em>birlikte</em> konuşalım.</h2>
-        </div>
-        <div class="contact-actions">
-          <a href="tel:+905549313535" class="contact-line"><span>Telefon</span><b>+90 554 931 35 35</b><i>↗</i></a>
-          <a href="mailto:av.baharselcuk@gmail.com" class="contact-line"><span>E-Posta</span><b>av.baharselcuk@gmail.com</b><i>↗</i></a>
-          <a href="https://wa.me/905549313535" target="_blank" rel="noopener" class="contact-line"><span>WhatsApp</span><b>Mesaj Gönder</b><i>↗</i></a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-brand"><span>⚖</span> Bahar Selçuk <small>AVUKAT</small></div>
-    <div>ADALET • GÜVEN • ÇÖZÜM</div>
-    <div>© <span id="year"></span> Bahar Selçuk</div>
-  </footer>
-
-  <div class="mobile-bar">
-    <a href="https://wa.me/905549313535" target="_blank" rel="noopener">WhatsApp</a>
-    <a href="tel:+905549313535">Ara</a>
-  </div>
-  <script src="script.js"></script>
+if (sessionStorage.getItem("siteAccess") === "1") {
+  document.getElementById("password-screen").style.display = "none";
+}
+</script>
 </body>
 </html>

@@ -345,3 +345,62 @@ body::before{
     border-radius: 23px;
   }
 }
+/* YENİ FOTOĞRAF ÇERÇEVESİ - DÜZELTME */
+
+.hero-photo-new {
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  padding: 4px !important;
+  box-sizing: border-box;
+  overflow: visible !important;
+  border-radius: 28px;
+  background: linear-gradient(
+    90deg,
+    #ff006e,
+    #7b2cff,
+    #00d9ff,
+    #00ff88,
+    #ffe600,
+    #ff6b00,
+    #ff006e
+  );
+  background-size: 400% 100%;
+  animation: ledBorder 5s linear infinite;
+  box-shadow:
+    0 0 12px rgba(255,0,110,.45),
+    0 0 25px rgba(0,217,255,.25);
+}
+
+.hero-photo-new img {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  border-radius: 23px;
+  box-shadow: none !important;
+}
+
+.hero-photo-new::before,
+.hero-photo-new::after {
+  display: none !important;
+}
+
+.hero-photo-new .portrait-ring {
+  display: none !important;
+}
+
+@keyframes ledBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

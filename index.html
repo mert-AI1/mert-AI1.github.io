@@ -11,61 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 <style>
-  #password-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  background: #0d0b0d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  text-align: center;
-}
 
-.password-box {
-  width: 100%;
-  max-width: 380px;
-  padding: 40px 28px;
-  border: 1px solid rgba(255,255,255,.15);
-  background: rgba(20,17,20,.95);
-  border-radius: 16px;
-}
-
-.password-box h2 {
-  color: #fff;
-  margin-bottom: 10px;
-}
-
-.password-box p {
-  color: #aaa;
-  margin-bottom: 24px;
-}
-
-.password-box input {
-  width: 100%;
-  padding: 14px;
-  box-sizing: border-box;
-  border-radius: 8px;
-  border: 1px solid #555;
-  background: #111;
-  color: #fff;
-  margin-bottom: 12px;
-}
-
-.password-box button {
-  width: 100%;
-  padding: 14px;
-  border: 0;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-#password-error {
-  color: #d88;
-  margin-top: 12px;
-  display: none;
 }
 </style>
 </head> 
@@ -250,32 +196,7 @@
 </div>
   
   <script src="script.js"></script>
-  <script>
-(function () {
-  const ACCESS_KEY = "siteAccessUntil";
-  const ONE_DAY = 24 * 60 * 60 * 1000;
-  const screen = document.getElementById("password-screen");
+  
 
-  function hasAccess() {
-    return Number(localStorage.getItem(ACCESS_KEY) || 0) > Date.now();
-  }
-
-  window.checkSitePassword = function () {
-    const password = document.getElementById("site-password").value;
-    const error = document.getElementById("password-error");
-
-    if (password === "Mert0216") {
-      localStorage.setItem(ACCESS_KEY, String(Date.now() + ONE_DAY));
-      screen.style.display = "none";
-    } else {
-      error.style.display = "block";
-    }
-  };
-
-  if (hasAccess()) {
-    screen.style.display = "none";
-  }
-})();
-</script>
 </body>
 </html>

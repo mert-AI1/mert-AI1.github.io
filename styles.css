@@ -265,3 +265,83 @@ body::before{
     height: 50px;
   }
 }
+/* BAHAR HERO - RENKLİ LED ÇERÇEVE */
+
+.hero-photo-new {
+  position: relative;
+  overflow: visible;
+  isolation: isolate;
+}
+
+.hero-photo-new img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 25px 70px rgba(0,0,0,.55);
+}
+
+/* Hareketli renkli LED */
+.hero-photo-new::before {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border-radius: 32px;
+  background: conic-gradient(
+    from 0deg,
+    #ff006e,
+    #7b2cff,
+    #00d9ff,
+    #00ff88,
+    #ffe600,
+    #ff6b00,
+    #ff006e
+  );
+  animation: ledRotate 4s linear infinite;
+  filter: blur(5px);
+  z-index: -2;
+}
+
+/* LED'in net iç çerçevesi */
+.hero-photo-new::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 28px;
+  background: #0d0b0d;
+  z-index: -1;
+}
+
+/* Eski altın halkayı kapat */
+.hero-photo-new .portrait-ring {
+  display: none;
+}
+
+@keyframes ledRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Telefonda da güzel görünmesi için */
+@media (max-width: 800px) {
+  .hero-photo-new img {
+    border-radius: 20px;
+  }
+
+  .hero-photo-new::before {
+    inset: -7px;
+    border-radius: 27px;
+  }
+
+  .hero-photo-new::after {
+    inset: -3px;
+    border-radius: 23px;
+  }
+}

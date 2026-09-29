@@ -84,4 +84,11 @@ window.addEventListener('load', () => {
     }, {threshold:.12});
     groups.forEach(g => io.observe(g));
   }
+  // BAHAR ASİSTAN
+function toggleBaharChat() {
+  const box = document.getElementById('baharChatBox');
+  if (!box) return;
+
+  box.style.display = box.style.display === 'block' ? 'none' : 'block';
+}
 })();

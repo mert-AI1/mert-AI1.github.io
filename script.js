@@ -85,7 +85,7 @@ window.addEventListener('load', () => {
     groups.forEach(g => io.observe(g));
   }
   // BAHAR ASİSTAN
-function toggleBaharChat() {
+window.toggleBaharChat = function() {
   const box = document.getElementById('baharChatBox');
   if (!box) return;
 

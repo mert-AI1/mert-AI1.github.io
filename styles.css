@@ -461,3 +461,23 @@ body::before{
     overflow-y: auto;
   }
 }
+@media screen and (max-width: 700px) {
+  #baharChatBox {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-height: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    z-index: 99999 !important;
+  }
+
+  #baharChatBox .bahar-chatbot-content {
+    max-height: calc(100dvh - 70px) !important;
+    overflow-y: auto !important;
+  }
+}

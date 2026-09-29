@@ -32,12 +32,15 @@ window.addEventListener('scroll', () => {
 
 // Cinematic page intro: fast enough for mobile, still gives the brand a reveal.
 document.body.classList.add('loading');
+const hidePreloader = () => {
+  document.getElementById('preloader')?.classList.add('hide');
+  document.body.classList.remove('loading');
+};
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('preloader')?.classList.add('hide');
-    document.body.classList.remove('loading');
-  }, 850);
+  setTimeout(hidePreloader, 850);
 });
+// Fallback: hide preloader after 3.5 seconds even if load event doesn't fire
+setTimeout(hidePreloader, 3500);
 
 
 /* V4 motion polish */

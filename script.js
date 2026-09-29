@@ -14,7 +14,6 @@ window.addEventListener('pointermove',(e)=>{
 });
 document.getElementById('year').textContent=new Date().getFullYear();
 
-
 // Subtle parallax for the hero image on desktop.
 const portrait = document.querySelector('.portrait-frame');
 window.addEventListener('pointermove', (e) => {
@@ -29,19 +28,14 @@ window.addEventListener('scroll', () => {
   portrait.style.marginTop = `${y}px`;
 });
 
-
 // Cinematic page intro: fast enough for mobile, still gives the brand a reveal.
 document.body.classList.add('loading');
-const hidePreloader = () => {
-  document.getElementById('preloader')?.classList.add('hide');
-  document.body.classList.remove('loading');
-};
 window.addEventListener('load', () => {
-  setTimeout(hidePreloader, 850);
+  setTimeout(() => {
+    document.getElementById('preloader')?.classList.add('hide');
+    document.body.classList.remove('loading');
+  }, 850);
 });
-// Fallback: hide preloader after 3.5 seconds even if load event doesn't fire
-setTimeout(hidePreloader, 3500);
-
 
 /* V4 motion polish */
 (() => {

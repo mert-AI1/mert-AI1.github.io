@@ -12,7 +12,7 @@ const glow=document.querySelector('.cursor-glow');
 window.addEventListener('pointermove',(e)=>{
   glow?.animate({left:`${e.clientX}px`,top:`${e.clientY}px`},{duration:450,fill:'forwards'});
 });
-document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('year').textContent='2023';
 
 // Subtle parallax for the hero image on desktop.
 const portrait = document.querySelector('.portrait-frame');

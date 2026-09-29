@@ -445,3 +445,19 @@ body::before{
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
 }
+@media (max-width: 600px) {
+  .bahar-chatbot-box {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+    z-index: 10000;
+  }
+
+  .bahar-chatbot-content {
+    max-height: calc(100dvh - 70px);
+    overflow-y: auto;
+  }
+}

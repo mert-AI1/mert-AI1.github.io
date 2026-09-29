@@ -407,8 +407,8 @@ body::before{
 /* BAHAR ASİSTAN */
 .bahar-chatbot {
   position: fixed;
-  right: 24px;
-  bottom: 95px;
+  left: 24px;
+  bottom: 35px;
   z-index: 9999;
   font-family: "Inter", sans-serif;
 }

@@ -87,3 +87,4 @@ setTimeout(hidePreloader, 3500);
     }, {threshold:.12});
     groups.forEach(g => io.observe(g));
   }
+})();

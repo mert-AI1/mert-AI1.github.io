@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aile ve Boşanma Hukuku | Av. Bahar Selçuk</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 25px;
+    }
+
+    h1 {
+      color: #f3b6c6;
+      font-size: 42px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: #f3b6c6;
+      margin-top: 40px;
+    }
+
+    p {
+      color: #ddd;
+      font-size: 17px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 40px;
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #f3b6c6;
+      padding: 10px 18px;
+      border-radius: 8px;
+    }
+
+    .contact {
+      margin-top: 50px;
+      padding: 25px;
+      border: 1px solid #f3b6c6;
+      border-radius: 12px;
+    }
+
+    .contact a {
+      color: #f3b6c6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #aaa;
+      border-top: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <a class="back" href="index.html">← Ana Sayfaya Dön</a>
+
+    <h1>Aile ve Boşanma Hukuku</h1>
+
+    <p>
+      Anlaşmalı ve çekişmeli boşanma davaları, nafaka, velayet ve kişisel
+      ilişki düzenlenmesi, mal rejiminin tasfiyesi ile yabancı mahkemelerden
+      alınan boşanma kararlarının Türkiye'de tanınması ve tenfizi bu alanda
+      yürütülen başlıca işlerdir.
+    </p>
+
+    <p>
+      Yurt dışında boşanan vatandaşlarımızın, bu kararı Türkiye'de nüfus
+      kayıtlarına işletmedikçe Türkiye'de hâlâ evli göründüğünü hatırlatmak
+      isteriz. Bu durum yeniden evlenme, miras ve tapu işlemlerinde sorun
+      doğurabilir.
+    </p>
+
+    <p>
+      Yabancı boşanma kararının Türkiye'de tanınması için izlenecek yol,
+      kararın niteliğine göre idari başvuru veya tanıma davası şeklinde
+      belirlenir.
+    </p>
+
+    <div class="contact">
+      <h2>İletişim</h2>
+
+      <p>
+        Bilgi almak için bize telefon, WhatsApp veya e-posta ile
+        ulaşabilirsiniz.
+      </p>
+
+      <p>
+        📞 <a href="tel:+905549313535">+90 554 931 35 35</a>
+      </p>
+
+      <p>
+        ✉️ <a href="mailto:av.baharselcuk@gmail.com">
+          av.baharselcuk@gmail.com
+        </a>
+      </p>
+
+      <p>
+        💬 <a href="https://wa.me/905549313535">
+          WhatsApp'tan Mesaj Gönder
+        </a>
+      </p>
+    </div>
+
+  </main>
+
+  <footer>
+    Bahar Selçuk — Avukat
+  </footer>
+
+</body>
+</html>

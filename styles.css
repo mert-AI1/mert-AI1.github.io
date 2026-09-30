@@ -404,3 +404,11 @@ body::before{
     background-position: 0% 50%;
   }
 }
+/* Açılış ekranı kapanırken içerik önce kaybolsun */
+.preloader > * {
+  transition: opacity .18s ease;
+}
+
+.preloader.hide > * {
+  opacity: 0;
+}

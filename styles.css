@@ -427,3 +427,32 @@ body::before{
   opacity: 0;
 }
 }
+/* BAHAR SELÇUK - GOLD PARLAMA */
+.hero-name-mark strong{
+  position:relative;
+  display:inline-block;
+  color:#d7b56d;
+  overflow:hidden;
+  background:linear-gradient(
+    90deg,
+    #9b7a32 0%,
+    #d7b56d 30%,
+    #fff1b8 50%,
+    #d7b56d 70%,
+    #9b7a32 100%
+  );
+  background-size:250% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:heroNameGold 3.5s linear infinite;
+}
+
+@keyframes heroNameGold{
+  0%{
+    background-position:250% center;
+  }
+  100%{
+    background-position:-250% center;
+  }
+}

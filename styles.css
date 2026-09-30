@@ -463,28 +463,84 @@ body{
     linear-gradient(135deg, #06120d 0%, #0a1d15 50%, #030907 100%) !important;
 }
 
-/* ARKA PLANDA ANİMASYONLU TERAZİ */
-body::after{
-  content:"⚖";
-  position:fixed;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  font-size:clamp(280px,45vw,650px);
-  color:rgba(215,181,109,.035);
-  z-index:-1;
-  pointer-events:none;
-  animation:balanceScale 6s ease-in-out infinite;
-  text-shadow:
-    0 0 40px rgba(215,181,109,.04),
-    0 0 100px rgba(215,181,109,.025);
+/* =========================================
+   PREMIUM KOYU YEŞİL ARKA PLAN
+   ========================================= */
+
+html,
+body{
+  background:#06110c !important;
 }
 
-@keyframes balanceScale{
-  0%,100%{
-    transform:translate(-50%,-50%) rotate(-1deg);
+body{
+  position:relative;
+  min-height:100vh;
+  background:
+    radial-gradient(
+      ellipse 80% 55% at 50% 0%,
+      rgba(37,91,67,.42) 0%,
+      rgba(19,52,38,.28) 35%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 0% 55%,
+      rgba(28,72,52,.22),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 100% 75%,
+      rgba(31,79,56,.20),
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      #07140e 0%,
+      #081810 28%,
+      #07150f 55%,
+      #06120d 78%,
+      #040b08 100%
+    ) !important;
+}
+
+/* Yumuşak dekoratif ışıklar */
+body::after{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.7;
+  background:
+    radial-gradient(
+      ellipse at 25% 25%,
+      rgba(215,181,109,.055),
+      transparent 18%
+    ),
+    radial-gradient(
+      ellipse at 78% 42%,
+      rgba(61,126,91,.09),
+      transparent 22%
+    ),
+    radial-gradient(
+      ellipse at 35% 82%,
+      rgba(36,96,67,.07),
+      transparent 20%
+    );
+  filter:blur(35px);
+  animation:premiumBgLight 12s ease-in-out infinite alternate;
+}
+
+/* Çok hafif hareket */
+@keyframes premiumBgLight{
+  0%{
+    transform:translate3d(-2%, -1%, 0) scale(1);
   }
+
   50%{
-    transform:translate(-50%,-50%) rotate(1deg);
+    transform:translate3d(2%, 2%, 0) scale(1.04);
+  }
+
+  100%{
+    transform:translate3d(-1%, 3%, 0) scale(1.02);
   }
 }

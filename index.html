@@ -11,7 +11,42 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 <style>
- 
+ .preloader-subtitle {
+  margin-top: 18px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  white-space: nowrap;
+
+  color: #d8c6a0;
+
+  background: linear-gradient(
+    90deg,
+    #9b7a32 0%,
+    #f5e6a8 35%,
+    #ffffff 50%,
+    #f5e6a8 65%,
+    #9b7a32 100%
+  );
+
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: goldSweep 3s linear infinite;
+}
+
+@keyframes goldSweep {
+  0% {
+    background-position: 250% center;
+  }
+
+  100% {
+    background-position: -250% center;
+  }
 }
 </style>
 </head> 
@@ -20,6 +55,7 @@
     <div class="preloader-mark">⚖</div>
     <div class="preloader-name">BAHAR SELÇUK</div>
     <div class="preloader-line"><span></span></div>
+    <div class="preloader-subtitle">SELÇUK HUKUK &amp; DANIŞMANLIK</div>
   </div>
   <div class="noise"></div>
   <div class="cursor-glow"></div>

@@ -82,3 +82,19 @@ window.addEventListener('load', () => {
     groups.forEach(g => io.observe(g));
   }
 })();
+/* KİTAP AÇILIŞI BİTİNCE KAPAT */
+window.addEventListener("load", function () {
+  const bookIntro = document.getElementById("bookIntro");
+
+  if (!bookIntro) return;
+
+  setTimeout(function () {
+    bookIntro.style.transition = "opacity 1s ease";
+    bookIntro.style.opacity = "0";
+
+    setTimeout(function () {
+      bookIntro.style.display = "none";
+    }, 1000);
+
+  }, 7000);
+});

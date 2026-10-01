@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supabase Test</title>
+</head>
 
+<body style="background:#080808;color:white;font-family:Arial;padding:30px">
+
+<h1>Supabase Bağlantı Testi</h1>
+<p id="sonuc">Bağlanıyor...</p>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+
+<script>
+const db = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+
+async function testEt(){
+
+  const { data, error } = await db
+    .from("site_icerigi")
+    .select("*")
+    .eq("id", 1)
+    .single();
+
+  if(error){
+    document.getElementById("sonuc").innerHTML =
+      "❌ HATA: " + error.message;
+    return;
+  }
+
+  document.getElementById("sonuc").innerHTML =
+    "✅ BAĞLANTI BAŞARILI<br><br>" +
+    "Avukat: " + data.avukat_adi + "<br>" +
+    "Başlık: " + data.site_basligi + "<br>" +
+    "Açıklama: " + data.aciklama;
+}
+
+testEt();
+</script>
+
+</body>
+</html>

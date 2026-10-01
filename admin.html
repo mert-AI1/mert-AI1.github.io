@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Admin Paneli | Selçuk Hukuk</title>
- 
+
 <style>
 *{
   box-sizing:border-box;
@@ -109,7 +109,6 @@ button:active{
   text-decoration:none;
   font-size:12px;
 }
-
 </style>
 </head>
 
@@ -127,13 +126,14 @@ button:active{
 
   <form onsubmit="return girisYap();">
 
-    <label for="username">Kullanıcı Adı</label>
+    <label for="email">E-posta</label>
 
     <input
-      id="username"
-      type="text"
-      placeholder="Kullanıcı adı"
-      autocomplete="off"
+      id="email"
+      type="email"
+      placeholder="E-posta adresi"
+      autocomplete="email"
+      required
     >
 
     <label for="password">Şifre</label>
@@ -142,7 +142,8 @@ button:active{
       id="password"
       type="password"
       placeholder="Şifre"
-      autocomplete="off"
+      autocomplete="current-password"
+      required
     >
 
     <button type="submit">
@@ -159,36 +160,59 @@ button:active{
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+
 <script>
 
-function girisYap(){
+const db = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
 
-  var kullanici = document.getElementById("username").value.trim();
+async function girisYap(){
 
-  var sifre = document.getElementById("password").value;
+  const email =
+    document.getElementById("email").value.trim();
 
-  if(kullanici === "admin" && sifre === "123456"){
+  const password =
+    document.getElementById("password").value;
 
-    document.getElementById("sonuc").innerHTML =
+  const sonuc =
+    document.getElementById("sonuc");
+
+  sonuc.textContent = "Giriş kontrol ediliyor...";
+  sonuc.style.color = "#d8c6a0";
+
+  const { data, error } =
+    await db.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+  if(error){
+
+    sonuc.textContent =
+      "❌ E-posta veya şifre hatalı.";
+
+    sonuc.style.color = "#ff6b6b";
+
+    return false;
+  }
+
+  if(data.session){
+
+    sonuc.textContent =
       "✅ Giriş başarılı!";
 
-    document.getElementById("sonuc").style.color =
-      "#7cff9b";
+    sonuc.style.color = "#7cff9b";
 
     setTimeout(function(){
 
-      window.location.href = "admin-panel.html";
+      window.location.href =
+        "admin-panel.html";
 
-    }, 500);
-
-  }else{
-
-    document.getElementById("sonuc").innerHTML =
-      "❌ Kullanıcı adı veya şifre hatalı!";
-
-    document.getElementById("sonuc").style.color =
-      "#ff6b6b";
-
+    },500);
   }
 
   return false;

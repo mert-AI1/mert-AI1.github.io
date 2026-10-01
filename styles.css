@@ -705,3 +705,55 @@ footer{
     font-size:11px;
   }
 }
+/* ATATÜRK SÖZÜ - FOTOĞRAFIN ÜSTÜ */
+.hero-quote{
+  position:absolute;
+  top:7%;
+  right:4%;
+  width:58%;
+  z-index:20;
+  text-align:center;
+  pointer-events:none;
+}
+
+.hero-quote-text{
+  font-family:cursive;
+  font-size:clamp(24px, 2.4vw, 38px);
+  line-height:1.45;
+  color:#f0dfb0;
+  letter-spacing:.3px;
+  text-shadow:0 0 18px rgba(220,190,110,.18);
+  min-height:110px;
+}
+
+.hero-quote-author{
+  margin-top:14px;
+  font-family:cursive;
+  font-size:clamp(18px, 1.7vw, 27px);
+  color:#d8c6a0;
+  opacity:0;
+  transition:opacity .8s ease;
+}
+
+.hero-quote-author.show{
+  opacity:1;
+}
+
+/* TELEFON */
+@media(max-width:800px){
+  .hero-quote{
+    top:5%;
+    right:5%;
+    width:90%;
+  }
+
+  .hero-quote-text{
+    font-size:22px;
+    line-height:1.5;
+  }
+
+  .hero-quote-author{
+    font-size:18px;
+    margin-top:10px;
+  }
+}

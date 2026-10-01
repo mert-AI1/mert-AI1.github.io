@@ -109,6 +109,7 @@ button:active{
   text-decoration:none;
   font-size:12px;
 }
+
 </style>
 </head>
 
@@ -159,9 +160,11 @@ button:active{
 </div>
 
 <script>
+
 function girisYap(){
 
   var kullanici = document.getElementById("username").value.trim();
+
   var sifre = document.getElementById("password").value;
 
   if(kullanici === "admin" && sifre === "123456"){
@@ -169,19 +172,28 @@ function girisYap(){
     document.getElementById("sonuc").innerHTML =
       "✅ Giriş başarılı!";
 
-    document.getElementById("sonuc").style.color = "#7cff9b";
+    document.getElementById("sonuc").style.color =
+      "#7cff9b";
+
+    setTimeout(function(){
+
+      window.location.href = "admin-panel.html";
+
+    }, 500);
 
   }else{
 
     document.getElementById("sonuc").innerHTML =
       "❌ Kullanıcı adı veya şifre hatalı!";
 
-    document.getElementById("sonuc").style.color = "#ff6b6b";
+    document.getElementById("sonuc").style.color =
+      "#ff6b6b";
 
   }
 
   return false;
 }
+
 </script>
 
 </body>

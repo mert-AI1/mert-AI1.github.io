@@ -674,3 +674,17 @@ footer{
     animation-duration:22s;
   }
 }
+/* MOBİL MENÜ - TIKLAMA DÜZELTMESİ */
+.menu-toggle,
+.hamburger,
+.menu-button,
+.nav-toggle{
+  position:relative !important;
+  z-index:99999 !important;
+  pointer-events:auto !important;
+}
+
+.site-header{
+  position:relative !important;
+  z-index:9999 !important;
+}

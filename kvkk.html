@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>KVKK Aydınlatma Metni | Av. Bahar Selçuk</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      color:#eee9df;
+      font-family:Inter,sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%,rgba(57,103,78,.22),transparent 30%),
+        radial-gradient(circle at 85% 40%,rgba(40,83,62,.20),transparent 32%),
+        linear-gradient(135deg,#07130e,#0b1d15 45%,#06110c);
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:-30%;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 30% 40%,rgba(75,130,95,.10),transparent 28%),
+        radial-gradient(circle at 70% 60%,rgba(188,157,82,.05),transparent 25%);
+      animation:aurora 12s ease-in-out infinite alternate;
+      z-index:0;
+    }
+
+    @keyframes aurora{
+      0%{transform:translate3d(-2%,0,0) scale(1);}
+      100%{transform:translate3d(2%,-2%,0) scale(1.08);}
+    }
+
+    .page{
+      position:relative;
+      z-index:1;
+      width:min(1050px,92%);
+      margin:auto;
+      padding:30px 0 80px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:10px 0 35px;
+    }
+
+    .brand{
+      color:#e7cf91;
+      text-decoration:none;
+      font-family:Cormorant Garamond,serif;
+      font-size:25px;
+      letter-spacing:1px;
+    }
+
+    .back{
+      color:#d8c6a0;
+      text-decoration:none;
+      font-size:12px;
+      letter-spacing:1px;
+      border:1px solid rgba(216,198,160,.25);
+      padding:10px 16px;
+      border-radius:30px;
+      transition:.3s ease;
+    }
+
+    .back:hover{
+      color:#fff;
+      border-color:#d8c6a0;
+      box-shadow:0 0 18px rgba(216,198,160,.15);
+    }
+
+    .hero{
+      text-align:center;
+      padding:55px 20px 65px;
+    }
+
+    .eyebrow{
+      color:#bda96e;
+      font-size:11px;
+      letter-spacing:4px;
+      font-family:Montserrat,sans-serif;
+      margin-bottom:18px;
+    }
+
+    h1{
+      font-family:Cormorant Garamond,serif;
+      font-size:clamp(45px,7vw,78px);
+      font-weight:600;
+      color:#eee6d3;
+      margin-bottom:12px;
+    }
+
+    .gold-line{
+      width:100px;
+      height:1px;
+      margin:0 auto 22px;
+      background:linear-gradient(90deg,transparent,#e7cf91,transparent);
+    }
+
+    .intro{
+      max-width:720px;
+      margin:auto;
+      color:#aaa99f;
+      line-height:1.8;
+      font-size:14px;
+    }
+
+    .document{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .section{
+      padding:30px;
+      border:1px solid rgba(216,198,160,.12);
+      background:rgba(7,24,16,.55);
+      backdrop-filter:blur(10px);
+      border-radius:18px;
+      box-shadow:0 15px 50px rgba(0,0,0,.18);
+
+      opacity:0;
+      transform:translateY(35px);
+      transition:
+        opacity .8s ease,
+        transform .8s ease;
+    }
+
+    .section.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .section-number{
+      color:#a98b42;
+      font-family:Montserrat,sans-serif;
+      font-size:11px;
+      letter-spacing:2px;
+      margin-bottom:8px;
+    }
+
+    h2{
+      font-family:Cormorant Garamond,serif;
+      color:#e7cf91;
+      font-size:30px;
+      margin-bottom:16px;
+      font-weight:600;
+    }
+
+    p{
+      color:#c5c3ba;
+      font-size:14px;
+      line-height:1.9;
+      margin-bottom:12px;
+    }
+
+    p:last-child{
+      margin-bottom:0;
+    }
+
+    strong{
+      color:#e7e0d0;
+      font-weight:600;
+    }
+
+    ul{
+      padding-left:20px;
+      margin-top:8px;
+    }
+
+    li{
+      color:#c5c3ba;
+      font-size:14px;
+      line-height:1.9;
+      margin-bottom:7px;
+    }
+
+    .contact-box{
+      border-color:rgba(216,198,160,.25);
+      background:linear-gradient(
+        135deg,
+        rgba(30,59,43,.55),
+        rgba(8,25,17,.65)
+      );
+    }
+
+    .contact-box p{
+      margin-bottom:8px;
+    }
+
+    .footer{
+      text-align:center;
+      padding-top:45px;
+      color:#777970;
+      font-size:11px;
+      letter-spacing:1px;
+    }
+
+    .footer a{
+      display:inline-block;
+      margin-top:14px;
+      color:#d8c6a0;
+      text-decoration:none;
+    }
+
+    @media(max-width:700px){
+
+      .page{
+        width:91%;
+        padding-top:18px;
+      }
+
+      .topbar{
+        padding-bottom:20px;
+      }
+
+      .brand{
+        font-size:21px;
+      }
+
+      .back{
+        padding:8px 12px;
+        font-size:10px;
+      }
+
+      .hero{
+        padding:45px 8px 45px;
+      }
+
+      h1{
+        font-size:48px;
+      }
+
+      .section{
+        padding:23px 20px;
+        border-radius:15px;
+      }
+
+      h2{
+        font-size:27px;
+      }
+
+      p,
+      li{
+        font-size:13px;
+        line-height:1.85;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <div class="topbar">
+    <a class="brand" href="index.html">⚖ Bahar Selçuk</a>
+    <a class="back" href="index.html">← Ana Sayfa</a>
+  </div>
+
+  <header class="hero">
+    <div class="eyebrow">SELÇUK HUKUK &amp; DANIŞMANLIK</div>
+
+    <h1>KVKK</h1>
+
+    <div class="gold-line"></div>
+
+    <p class="intro">
+      Kişisel Verilerin Korunması Kanunu kapsamında kişisel verilerin
+      işlenmesine ilişkin aydınlatma metnidir.
+    </p>
+  </header>
+
+  <main class="document">
+
+    <section class="section">
+      <div class="section-number">01</div>
+      <h2>Veri Sorumlusu</h2>
+
+      <p>
+        6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) kapsamında
+        kişisel verileriniz, veri sorumlusu sıfatıyla
+        <strong>Av. Bahar Selçuk / Selçuk Hukuk &amp; Danışmanlık</strong>
+        tarafından işlenebilmektedir.
+      </p>
+
+      <p>
+        <strong>İzmir Ofisi:</strong>
+        Mansuroğlu 284/1. Sk. No:12 Daire:6 Bayraklı / İzmir
+      </p>
+
+      <p>
+        <strong>Didim Ofisi:</strong>
+        Çamlık Mah. Gökuman Caddesi Begüm Apt. 19/B Didim / Aydın
+      </p>
+
+      <p>
+        <strong>E-posta:</strong> av.baharselcuk@gmail.com
+      </p>
+
+      <p>
+        <strong>Telefon:</strong> +90 554 931 35 35
+      </p>
+    </section>
+
+
+    <section class="section">
+      <div class="section-number">02</div>
+      <h2>İşlenen Kişisel Veriler</h2>
+
+      <p>
+        Hukuki ilişkinin niteliğine ve tarafınızca sağlanan bilgilere bağlı
+        olarak aşağıdaki kişisel veriler işlenebilir:
+      </p>
+
+      <ul>
+        <li>Ad ve soyad bilgileri</li>
+        <li>Telefon ve iletişim bilgileri</li>
+        <li>E-posta adresi</li>
+        <li>İletişim ve başvuru bilgileri</li>
+        <li>Hukuki süreç kapsamında tarafınızca iletilen bilgi ve belgeler</li>
+        <li>Hukuki hizmetin yürütülmesi için gerekli diğer bilgiler</li>
+      </ul>
+
+      <p>
+        Özel nitelikli kişisel veriler ise yalnızca ilgili hukuki süreç
+        bakımından gerekli olması ve KVKK'da öngörülen şartların bulunması
+        halinde işlenir.
+      </p>
+    </section>
+
+
+    <section class="section">
+      <div class="section-number">03</div>
+      <h2>Kişisel Verilerin İşlenme Amaçları</h2>
+
+      <p>
+        Kişisel verileriniz; hukuki danışmanlık ve avukatlık hizmetlerinin
+        yürütülmesi, dava ve uyuşmazlık süreçlerinin takibi, iletişim
+        faaliyetlerinin gerçekleştirilmesi ve hukuki yükümlülüklerin yerine
+        getirilmesi amaçlarıyla işlenebilir.
+      </p>
+
+      <ul>
+        <li>Hukuki danışmanlık ve avukatlık hizmetlerinin sunulması</li>
+        <li>Dava, icra ve diğer hukuki süreçlerin yürütülmesi</li>
+        <li>Randevu ve iletişim süreçlerinin yönetilmesi</li>
+        <li>Talep ve başvuruların cevaplandırılması</li>
+        <li>Yasal ve mesleki yükümlülüklerin yerine getirilmesi</li>
+        <li>Gerekli kayıt ve belgelerin oluşturulması ve saklanması</li>
+      </ul>
+    </section>
+
+
+    <section class="section">
+      <div class="section-number">04</div>
+      <h2>Kişisel Verilerin İşlenmesinin Hukuki Sebepleri</h2>
+
+      <p>
+        Kişisel verileriniz, KVKK'nın 5. ve 6. maddelerinde belirtilen
+        kişisel veri işleme şartları kapsamında işlenmektedir.
+      </p>
+
+      <p>
+        İşleme faaliyetinin niteliğine göre kanuni yükümlülüğün yerine
+        getirilmesi, sözleşmenin kurulması veya ifası, bir hakkın tesisi,
+        kullanılması veya korunması, hukuki yükümlülüklerin yerine
+        getirilmesi ve kanunda öngörülen diğer hukuki sebepler esas alınabilir.
+      </p>
+
+      <p>
+        Kanunen gerekli olduğu durumlarda açık rızanız ayrıca alınabilir.
+      </p>
+    </section>
+
+
+    <section class="section">
+      <div class="section-number">05</div>
+      <h2>Kişisel Verilerin Toplanma Yöntemleri</h2>
+
+      <p>
+        Kişisel verileriniz; internet sitesi üzerindeki iletişim kanalları,
+        e-posta, telefon, WhatsApp, yüz yüze görüşmeler, hukuki süreç
+        kapsamında sunulan belgeler ve ilgili kurum veya kuruluşlardan
+        hukuken elde edilebilen bilgiler aracılığıyla toplanabilir.
+      </p>
+    </section>
+
+
+    <section class="section">
+      <div class="section-number">06</div>
+      <h2>Kişisel Verilerin Aktarılması</h2>
+
+      <p>
+        Kişisel verileriniz, hukuki hizmetin yürütülmesi veya kanuni
+        yükümlülüklerin yerine getirilmesi amacıyla ve KVKK'da öngörülen
+        şartlar çerçevesinde yetkili kişi, kurum ve kuruluşlara aktarılabilir.
+      </p>
+
+      <p>
+        Bu kapsamda mahkemeler, icra müdürlükleri, kamu kurum ve kuruluşları
+        ve hukuki sürecin yürütülmesi bakımından yetkili diğer kişi veya
+        kuruluşlar ilgili mevzuat çerçevesinde veri aktarımının tarafı olabilir.
+      </p>
+    </section>
+
+
+    <section class="section">
+      <div class="section-number">07</div>
+      <h2>Saklama Süresi</h2>
+
+      <p>
+        Kişisel verileriniz, işlenme amaçlarının gerektirdiği süre boyunca
+        ve ilgili mevzuatta öngörülen yasal saklama süreleri dikkate alınarak
+        muhafaza edilir.
+      </p>
+
+      <p>
+        Saklama süresinin sona ermesi veya verilerin işlenmesini gerektiren
+        sebeplerin ortadan kalkması halinde, kişisel veriler ilgili mevzuata
+        uygun şekilde silinir, yok edilir veya anonim hale getirilir.
+      </p>
+    </section>
+
+
+    <section class="section">
+      <div class="section-number">08</div>
+      <h2>İlgili Kişinin Hakları</h2>
+
+      <p>
+        KVKK'nın 11. maddesi kapsamında kişisel veri sahipleri;
+      </p>
+
+      <ul>
+        <li>Kişisel verilerinin işlenip işlenmediğini öğrenme</li>
+        <li>İşlenmişse buna ilişkin bilgi talep etme</li>
+        <li>İşlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme</li>
+        <li>Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme</li>
+        <li>Eksik veya yanlış işlenmiş verilerin düzeltilmesini isteme</li>
+        <li>KVKK kapsamında silinmesini veya yok edilmesini isteme</li>
+        <li>İşlemlerin üçüncü kişilere bildirilmesini isteme</li>
+        <li>Kanuni şartlar kapsamında otomatik sistemlere ilişkin itirazlarda bulunma</li>
+        <li>Kanuna aykırı veri işlenmesi nedeniyle zararın giderilmesini talep etme</li>
+      </ul>
+    </section>
+
+
+    <section class="section contact-box">
+      <div class="section-number">09</div>
+      <h2>Başvuru ve İletişim</h2>
+
+      <p>
+        KVKK kapsamındaki taleplerinizi ve başvurularınızı aşağıdaki iletişim
+        kanalları üzerinden iletebilirsiniz.
+      </p>
+
+      <p>
+        <strong>E-posta:</strong> av.baharselcuk@gmail.com
+      </p>
+
+      <p>
+        <strong>Telefon:</strong> +90 554 931 35 35
+      </p>
+
+      <p>
+        Başvurular, KVKK ve ilgili mevzuatta öngörülen usul ve esaslar
+        çerçevesinde değerlendirilir.
+      </p>
+    </section>
+
+
+    <section class="section">
+      <div class="section-number">10</div>
+      <h2>Güncelleme</h2>
+
+      <p>
+        Bu Aydınlatma Metni, kişisel veri işleme faaliyetlerinde veya ilgili
+        mevzuatta meydana gelebilecek değişiklikler doğrultusunda
+        güncellenebilir.
+      </p>
+
+      <p>
+        <strong>Son Güncelleme:</strong> 01.10.2026
+      </p>
+    </section>
+
+  </main>
+
+  <div class="footer">
+    © 2026 Bahar Selçuk • Selçuk Hukuk &amp; Danışmanlık
+    <br>
+    <a href="index.html">Ana Sayfaya Dön ↑</a>
+  </div>
+
+</div>
+
+
+<script>
+  const sections = document.querySelectorAll('.section');
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  },{
+    threshold:0.12
+  });
+
+  sections.forEach(section=>{
+    observer.observe(section);
+  });
+</script>
+
+</body>
+</html>

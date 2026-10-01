@@ -7,7 +7,8 @@
 <body>
 
 <h2>Supabase Bağlantı Testi</h2>
-<div id="sonuc">Kontrol ediliyor...</div>
+
+<pre id="sonuc">Kontrol ediliyor...</pre>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
@@ -30,32 +31,20 @@
       .limit(1);
 
     if (error) {
-      sonuc.innerHTML =
-        "❌ HATA<br><br>" + error.message;
+      sonuc.textContent =
+        "HATA:\n\n" + JSON.stringify(error, null, 2);
       return;
     }
 
-    if (!data || data.length === 0) {
-      sonuc.innerHTML = "⚠️ Tablo boş.";
-      return;
-    }
-
-    const kayit = data[0];
-
-    sonuc.innerHTML = `
-      <h3>✅ SUPABASE ÇALIŞIYOR</h3>
-      <p><b>Avukat:</b> ${kayit.avukat_adi ?? "YOK"}</p>
-      <p><b>Başlık:</b> ${kayit.site_basligi ?? "YOK"}</p>
-      <p><b>Açıklama:</b> ${kayit.aciklama ?? "YOK"}</p>
-      <p><b>Uluslararası:</b> ${kayit.uluslararasi ?? "YOK"}</p>
-      <hr>
-      <pre>${JSON.stringify(kayit, null, 2)}</pre>
-    `;
+    sonuc.textContent =
+      "VERİTABANINDAN GELEN GERÇEK VERİ:\n\n" +
+      JSON.stringify(data, null, 2);
 
   } catch (e) {
 
-    sonuc.innerHTML =
-      "❌ JavaScript Hatası<br><br>" + e.message;
+    sonuc.textContent =
+      "JAVASCRIPT HATASI:\n\n" +
+      e.message;
 
   }
 

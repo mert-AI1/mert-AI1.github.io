@@ -1,46 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Supabase Test</title>
+  <meta charset="utf-8">
+  <title>Supabase Test</title>
 </head>
+<body>
 
-<body style="background:#080808;color:white;font-family:Arial;padding:30px">
-
-<h1>Supabase Bağlantı Testi</h1>
-<p id="sonuc">Bağlanıyor...</p>
+<h2>Supabase Bağlantı Testi</h2>
+<div id="sonuc">Kontrol ediliyor...</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 
 <script>
-const db = supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
-);
+(async function () {
 
-async function testEt(){
+  const sonuc = document.getElementById("sonuc");
 
- const { data, error } = await db
-  .from("site_icerigi")
-  .select("avukat_adi,site_basligi,aciklama,uluslararasi")
-  .limit(1);
-  if(error){
-    document.getElementById("sonuc").innerHTML =
-      "❌ HATA: " + error.message;
-    return;
+  try {
+
+    const db = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+
+    const { data, error } = await db
+      .from("site_icerigi")
+      .select("*")
+      .limit(1);
+
+    if (error) {
+      sonuc.innerHTML =
+        "❌ HATA<br><br>" + error.message;
+      return;
+    }
+
+    if (!data || data.length === 0) {
+      sonuc.innerHTML = "⚠️ Tablo boş.";
+      return;
+    }
+
+    const kayit = data[0];
+
+    sonuc.innerHTML = `
+      <h3>✅ SUPABASE ÇALIŞIYOR</h3>
+      <p><b>Avukat:</b> ${kayit.avukat_adi ?? "YOK"}</p>
+      <p><b>Başlık:</b> ${kayit.site_basligi ?? "YOK"}</p>
+      <p><b>Açıklama:</b> ${kayit.aciklama ?? "YOK"}</p>
+      <p><b>Uluslararası:</b> ${kayit.uluslararasi ?? "YOK"}</p>
+      <hr>
+      <pre>${JSON.stringify(kayit, null, 2)}</pre>
+    `;
+
+  } catch (e) {
+
+    sonuc.innerHTML =
+      "❌ JavaScript Hatası<br><br>" + e.message;
+
   }
 
-  document.getElementById("sonuc").innerHTML =
-    "✅ BAĞLANTI BAŞARILI<br><br>" +
-    "Avukat: " + data.avukat_adi + "<br>" +
-    "Başlık: " + data.site_basligi + "<br>" +
-    "Açıklama: " + data.aciklama + "<br>" +
-    "Uluslararası: " + data.uluslararasi;
-}
- 
-testEt();
+})();
 </script>
 
 </body>

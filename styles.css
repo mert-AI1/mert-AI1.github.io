@@ -757,3 +757,9 @@ footer{
     margin-top:10px;
   }
 }
+/* ATATÜRK SÖZÜ ALTINDAKİ KÜÇÜK TERAZİYİ GİZLE */
+.hero-quote + .hero-copy::before,
+.hero-quote + .hero-copy::after{
+  display:none !important;
+  content:none !important;
+}

@@ -256,7 +256,123 @@
 </div>
   
   <script src="script.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+
+<script>
+(async function () {
+  try {
+    const db = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+
+    const { data, error } = await db
+      .from("site_icerigi")
+      .select("avukat_adi,site_basligi,aciklama,uluslararasi")
+      .limit(1);
+
+    if (error) {
+      console.error("Supabase hata:", error);
+      return;
+    }
+
+    if (!data || !data.length) {
+      console.warn("site_icerigi kaydı bulunamadı.");
+      return;
+    }
+
+    const icerik = data[0];
+
+    /* AVUKAT ADI */
+    if (icerik.avukat_adi) {
+      document.querySelectorAll(".preloader-name").forEach(function(el) {
+        el.textContent = icerik.avukat_adi;
+      });
+
+      document.querySelectorAll(".brand span:last-child").forEach(function(el) {
+        el.textContent = icerik.avukat_adi;
+      });
+
+      const heroTitle = document.querySelector(".hero-copy h1");
+
+      if (heroTitle) {
+        const parcalar = icerik.avukat_adi.trim().split(/\s+/);
+
+        if (parcalar.length >= 2) {
+          const soyad = parcalar.pop();
+          const ad = parcalar.join(" ");
+
+          heroTitle.textContent = "";
+
+          const adSpan = document.createTextNode(ad + " ");
+          const soyadEm = document.createElement("em");
+
+          soyadEm.textContent = soyad;
+
+          heroTitle.appendChild(adSpan);
+          heroTitle.appendChild(soyadEm);
+        } else {
+          heroTitle.textContent = icerik.avukat_adi;
+        }
+      }
+
+      document.querySelectorAll(".footer-brand").forEach(function(el) {
+        const small = el.querySelector("small");
+
+        if (small) {
+          el.childNodes.forEach(function(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+              node.textContent = " " + icerik.avukat_adi + " ";
+            }
+          });
+        }
+      });
+    }
+
+    /* SİTE BAŞLIĞI */
+    if (icerik.site_basligi) {
+      document.title = icerik.site_basligi;
+
+      document.querySelectorAll(".preloader-subtitle").forEach(function(el) {
+        el.textContent = icerik.site_basligi;
+      });
+    }
+
+    /* AÇIKLAMA */
+    if (icerik.aciklama) {
+      const heroDescription = document.querySelector(".hero-copy > p");
+
+      if (heroDescription) {
+        heroDescription.textContent = icerik.aciklama;
+      }
+
+      const metaDescription =
+        document.querySelector('meta[name="description"]');
+
+      if (metaDescription) {
+        metaDescription.setAttribute(
+          "content",
+          icerik.aciklama
+        );
+      }
+    }
+
+    /* ULUSLARARASI DANIŞMANLIK */
+    if (icerik.uluslararasi) {
+      const internationalSection =
+        document.querySelector(".international-section .international-copy p");
+
+      if (internationalSection) {
+        internationalSection.textContent = icerik.uluslararasi;
+      }
+    }
+
+  } catch (error) {
+    console.error("Site içerikleri yüklenemedi:", error);
+  }
+})();
+</script>
 
 </body>
 </html>

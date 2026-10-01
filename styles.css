@@ -562,36 +562,28 @@ body{
       transparent 42%
     ),
     rgba(5,20,13,.72) !important;
+  /* YAZILARIN VE İÇERİKLERİN ÖNDE KALMASI */
+main,
+.site-header,
+footer,
+.hero-copy,
+.hero-portrait,
+.hero-name-mark,
+.section,
+.online-section,
+.international-section,
+.services,
+.visual-break,
+.offices,
+.contact,
+.contact-card,
+.service,
+.office,
+.process-card {
+  position: relative;
+  z-index: 2;
 }
-
-/* YEŞİL ATMOSFER IŞIKLARI */
-
-body::after{
-  content:"";
-  position:fixed;
-  inset:-15%;
-  pointer-events:none;
-  z-index:-1;
-  background:
-    radial-gradient(
-      ellipse at 18% 20%,
-      rgba(215,181,109,.045),
-      transparent 20%
-    ),
-    radial-gradient(
-      ellipse at 82% 40%,
-      rgba(65,135,91,.075),
-      transparent 24%
-    ),
-    radial-gradient(
-      ellipse at 35% 82%,
-      rgba(35,100,67,.065),
-      transparent 22%
-    );
-  filter:blur(40px);
-  animation:greenAtmosphere 16s ease-in-out infinite alternate;
 }
-
 @keyframes greenAtmosphere{
   0%{
     transform:translate3d(-2%,-1%,0) scale(1);

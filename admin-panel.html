@@ -4,69 +4,312 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Admin Paneli | Selçuk Hukuk</title>
- 
+<title>Yönetim Paneli | Selçuk Hukuk</title>
+
 <style>
-body{
+*{
+  box-sizing:border-box;
   margin:0;
+  padding:0;
+}
+
+body{
   min-height:100vh;
+  font-family:Arial,sans-serif;
+  color:#f5e6b8;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(80,120,90,.22),transparent 35%),
+    radial-gradient(circle at 90% 90%,rgba(180,150,70,.12),transparent 35%),
+    #07150f;
+}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  padding:20px;
+  background:rgba(7,21,15,.94);
+  border-bottom:1px solid rgba(216,198,160,.2);
+  backdrop-filter:blur(15px);
   display:flex;
   align-items:center;
-  justify-content:center;
-  font-family:Arial,sans-serif;
-  background:#07150f;
-  color:#f5e6b8;
+  justify-content:space-between;
+  gap:15px;
 }
 
-.panel{
-  width:90%;
-  max-width:600px;
-  padding:40px 25px;
-  text-align:center;
-  border:1px solid #b99a55;
-  border-radius:20px;
-  background:#0b2118;
-  box-shadow:0 20px 60px rgba(0,0,0,.5);
-}
-
-h1{
-  letter-spacing:3px;
-}
-
-p{
-  color:#bcae8b;
-}
-
-.logout{
-  display:inline-block;
-  margin-top:25px;
-  padding:12px 20px;
-  border-radius:10px;
-  background:#b99a55;
-  color:#07150f;
-  text-decoration:none;
+.logo{
+  font-size:17px;
   font-weight:bold;
+  letter-spacing:1px;
+}
+
+.logo span{
+  display:block;
+  color:#bcae8b;
+  font-size:11px;
+  margin-top:5px;
+  font-weight:normal;
+}
+
+.exit{
+  color:#07150f;
+  background:#d8c6a0;
+  padding:10px 15px;
+  border-radius:9px;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.container{
+  width:100%;
+  max-width:1000px;
+  margin:auto;
+  padding:25px 18px 50px;
+}
+
+.welcome{
+  padding:25px 20px;
+  margin-bottom:22px;
+  border:1px solid rgba(216,198,160,.2);
+  border-radius:18px;
+  background:rgba(10,28,20,.75);
+}
+
+.welcome h1{
+  font-size:24px;
+  margin-bottom:8px;
+}
+
+.welcome p{
+  color:#bcae8b;
+  font-size:13px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.card{
+  min-height:150px;
+  padding:22px;
+  border:1px solid rgba(216,198,160,.2);
+  border-radius:17px;
+  background:rgba(10,28,20,.75);
+  transition:.25s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(216,198,160,.55);
+}
+
+.icon{
+  font-size:30px;
+  margin-bottom:15px;
+}
+
+.card h2{
+  font-size:16px;
+  margin-bottom:8px;
+}
+
+.card p{
+  color:#bcae8b;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.card button{
+  margin-top:15px;
+  border:1px solid rgba(216,198,160,.35);
+  border-radius:8px;
+  padding:9px 13px;
+  background:transparent;
+  color:#f5e6b8;
+  cursor:pointer;
+}
+
+.info{
+  margin-top:22px;
+  padding:20px;
+  border-radius:17px;
+  border:1px solid rgba(216,198,160,.2);
+  background:rgba(10,28,20,.75);
+}
+
+.info h2{
+  font-size:16px;
+  margin-bottom:15px;
+}
+
+.info-row{
+  padding:11px 0;
+  border-bottom:1px solid rgba(216,198,160,.1);
+  font-size:13px;
+}
+
+.info-row:last-child{
+  border-bottom:0;
+}
+
+.info-row strong{
+  display:block;
+  color:#bcae8b;
+  font-size:11px;
+  margin-bottom:4px;
+}
+
+@media(max-width:600px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .header{
+    padding:15px;
+  }
+
+  .welcome h1{
+    font-size:21px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="panel">
+<header class="header">
 
-  <div style="font-size:45px;">🔐</div>
+  <div class="logo">
+    SELÇUK HUKUK
+    <span>Yönetim Paneli</span>
+  </div>
 
-  <h1>ADMİN PANELİ</h1>
-
-  <p>Selçuk Hukuk &amp; Danışmanlık</p>
-
-  <p>Giriş başarılı.</p>
-
-  <a class="logout" href="admin.html">
+  <a class="exit" href="admin.html">
     ÇIKIŞ
   </a>
 
-</div>
+</header>
+
+<main class="container">
+
+  <section class="welcome">
+    <h1>Hoş Geldiniz, Bahar Selçuk</h1>
+    <p>
+      Web sitenizin yönetim alanından içeriklerinizi kontrol edebilirsiniz.
+    </p>
+  </section>
+
+  <section class="grid">
+
+    <div class="card">
+      <div class="icon">📝</div>
+      <h2>Site İçeriği</h2>
+      <p>
+        Ana sayfadaki başlık, açıklama ve tanıtım metinlerini düzenleyin.
+      </p>
+      <button onclick="gelistirmeMesaji()">
+        DÜZENLE
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="icon">📞</div>
+      <h2>İletişim Bilgileri</h2>
+      <p>
+        Telefon, WhatsApp ve e-posta iletişim bilgilerini yönetin.
+      </p>
+      <button onclick="gelistirmeMesaji()">
+        DÜZENLE
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="icon">📍</div>
+      <h2>Adresler</h2>
+      <p>
+        Aydın (Didim) ve İzmir ofis bilgilerini yönetin.
+      </p>
+      <button onclick="gelistirmeMesaji()">
+        DÜZENLE
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="icon">⚖️</div>
+      <h2>Hukuk Alanları</h2>
+      <p>
+        Sunduğunuz hukuk ve danışmanlık hizmetlerini yönetin.
+      </p>
+      <button onclick="gelistirmeMesaji()">
+        DÜZENLE
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🖼️</div>
+      <h2>Fotoğraf & Logo</h2>
+      <p>
+        Site görselleri ve logo alanlarını yönetmek için kullanılacak.
+      </p>
+      <button onclick="gelistirmeMesaji()">
+        YÖNET
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🌐</div>
+      <h2>Siteyi Görüntüle</h2>
+      <p>
+        Ziyaretçilerin gördüğü ana sayfayı açın.
+      </p>
+      <button onclick="window.location.href='index.html'">
+        SİTEYİ AÇ
+      </button>
+    </div>
+
+  </section>
+
+  <section class="info">
+
+    <h2>Mevcut Site Bilgileri</h2>
+
+    <div class="info-row">
+      <strong>AVUKAT</strong>
+      Bahar Selçuk
+    </div>
+
+    <div class="info-row">
+      <strong>TELEFON / WHATSAPP</strong>
+      +90 554 931 35 35
+    </div>
+
+    <div class="info-row">
+      <strong>E-POSTA</strong>
+      baharselcuk@gmail.com
+    </div>
+
+    <div class="info-row">
+      <strong>LOKASYON</strong>
+      Aydın (Didim) & İzmir
+    </div>
+
+    <div class="info-row">
+      <strong>DİDİM ADRESİ</strong>
+      Çamlık mah. Gökduman caddesi begüm apt. 19/B Didim/Aydın
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+function gelistirmeMesaji(){
+  alert("Bu bölüm bir sonraki aşamada aktif edilecek.");
+}
+</script>
 
 </body>
 </html>

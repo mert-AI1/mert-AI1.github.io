@@ -82,3 +82,34 @@ window.addEventListener('load', () => {
     groups.forEach(g => io.observe(g));
   }
 })();
+/* ATATÜRK SÖZÜ - HARF HARF YAZILMA */
+document.addEventListener("DOMContentLoaded", function () {
+  const quote = document.getElementById("heroQuoteText");
+  const author = document.querySelector(".hero-quote-author");
+
+  if (!quote) return;
+
+  const text =
+    "𝓐𝓭𝓪𝓵𝓮𝓽 𝓰ü𝓬ü 𝓫𝓪ğı𝓶𝓼ı𝔃 𝓸𝓵𝓶𝓪𝔂𝓪𝓷 𝓫𝓲𝓻 𝓶𝓲𝓵𝓵𝓮𝓽𝓲𝓷,\n𝓭𝓮𝓿𝓵𝓮𝓽 𝓱𝓪𝓵𝓲𝓷𝓭𝓮 𝓿𝓪𝓻𝓵ığı 𝓴𝓪𝓫𝓾𝓵 𝓸𝓵𝓾𝓷𝓪𝓶𝓪𝔃.";
+
+  let i = 0;
+
+  function typeQuote() {
+    if (i < text.length) {
+      if (text[i] === "\n") {
+        quote.innerHTML += "<br>";
+      } else {
+        quote.innerHTML += text[i];
+      }
+
+      i++;
+      setTimeout(typeQuote, 38);
+    } else {
+      setTimeout(() => {
+        if (author) author.classList.add("show");
+      }, 300);
+    }
+  }
+
+  setTimeout(typeQuote, 900);
+});

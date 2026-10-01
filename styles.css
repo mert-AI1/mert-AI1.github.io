@@ -424,7 +424,10 @@ body::before{
   opacity: 0;
 }
 }
-/* BAHAR SELÇUK - GOLD PARLAMA */
+/* =========================================
+   BAHAR SELÇUK - GOLD PARLAMA
+   ========================================= */
+
 .hero-name-mark strong{
   position:relative;
   display:inline-block;
@@ -452,14 +455,17 @@ body::before{
   100%{
     background-position:-250% center;
   }
-  /* =========================================
+}
+
+
+/* =========================================
    SELÇUK HUKUK
-   PREMIUM KOYU YEŞİL ARKA PLAN
+   PREMIUM HAREKETLİ KOYU YEŞİL
    ========================================= */
 
 html,
 body{
-  background:#06130d !important;
+  background:#04100a !important;
 }
 
 body{
@@ -468,38 +474,96 @@ body{
   background:
     radial-gradient(
       ellipse 100% 55% at 50% 0%,
-      rgba(42,105,73,.38) 0%,
-      rgba(22,65,44,.22) 38%,
-      transparent 72%
+      rgba(42,105,73,.34),
+      transparent 70%
     ),
     radial-gradient(
       ellipse 80% 55% at 0% 45%,
-      rgba(28,82,55,.18),
+      rgba(28,82,55,.20),
       transparent 72%
     ),
     radial-gradient(
       ellipse 80% 55% at 100% 70%,
-      rgba(35,91,62,.16),
+      rgba(35,91,62,.18),
       transparent 72%
     ),
     linear-gradient(
       180deg,
       #07170f 0%,
-      #081b12 25%,
-      #071910 50%,
-      #06160e 75%,
-      #05110b 100%
+      #081b12 30%,
+      #06160e 65%,
+      #041009 100%
     ) !important;
 }
+
+
+/* HAREKETLİ YEŞİL IŞIK ATMOSFERİ */
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  pointer-events:none;
+  z-index:0;
+
+  background:
+    radial-gradient(
+      ellipse 28% 22% at 15% 20%,
+      rgba(45,125,78,.20),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 30% 24% at 85% 38%,
+      rgba(35,115,70,.18),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 26% 20% at 45% 82%,
+      rgba(46,125,78,.15),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 18% 16% at 65% 15%,
+      rgba(215,181,109,.055),
+      transparent 70%
+    );
+
+  filter:blur(45px);
+  animation:greenAtmosphere 18s ease-in-out infinite alternate;
+}
+
+
+/* İÇERİKLER IŞIĞIN ÖNÜNDE */
+
+.site-header,
+main,
+footer{
+  position:relative;
+  z-index:1;
+}
+
+
+/* BÖLÜMLER */
+
+.section,
+.intro,
+.services,
+.offices,
+.contact,
+.online-section,
+.international-section{
+  background:transparent !important;
+}
+
 
 /* HERO */
 
 .hero{
   background:
     radial-gradient(
-      ellipse 70% 65% at 75% 30%,
-      rgba(46,112,77,.28),
-      transparent 58%
+      ellipse 75% 70% at 75% 30%,
+      rgba(46,112,77,.22),
+      transparent 68%
     ),
     linear-gradient(
       135deg,
@@ -509,15 +573,6 @@ body{
     ) !important;
 }
 
-/* TÜM BÖLÜMLER AYNI YEŞİL ATMOSFERDE */
-
-.section,
-.intro,
-.services,
-.offices,
-.contact{
-  background:transparent !important;
-}
 
 /* HİZMETLER */
 
@@ -525,10 +580,11 @@ body{
   background:
     radial-gradient(
       ellipse 75% 60% at 50% 50%,
-      rgba(35,91,62,.12),
+      rgba(35,91,62,.10),
       transparent 75%
     ) !important;
 }
+
 
 /* FOTOĞRAFLI BÖLÜM */
 
@@ -546,11 +602,13 @@ body{
     ) !important;
 }
 
+
 /* OFİSLER */
 
 .office{
   background:rgba(7,28,18,.72) !important;
 }
+
 
 /* İLETİŞİM */
 
@@ -562,43 +620,35 @@ body{
       transparent 42%
     ),
     rgba(5,20,13,.72) !important;
-  /* YAZILARIN VE İÇERİKLERİN ÖNDE KALMASI */
-main,
-.site-header,
-footer,
-.hero-copy,
-.hero-portrait,
-.hero-name-mark,
-.section,
-.online-section,
-.international-section,
-.services,
-.visual-break,
-.offices,
-.contact,
-.contact-card,
-.service,
-.office,
-.process-card {
-  position: relative;
-  z-index: 2;
 }
-}
+
+
+/* HAREKET */
+
 @keyframes greenAtmosphere{
   0%{
-    transform:translate3d(-2%,-1%,0) scale(1);
+    transform:translate3d(-3%,-2%,0) scale(1);
+  }
+
+  25%{
+    transform:translate3d(2%,1%,0) scale(1.035);
   }
 
   50%{
-    transform:translate3d(2%,2%,0) scale(1.035);
+    transform:translate3d(4%,-1%,0) scale(1.06);
+  }
+
+  75%{
+    transform:translate3d(-1%,3%,0) scale(1.04);
   }
 
   100%{
-    transform:translate3d(-1%,3%,0) scale(1.02);
+    transform:translate3d(-4%,1%,0) scale(1.02);
   }
 }
 
-/* MOBİLDE DE YEŞİL KALSIN */
+
+/* MOBİL */
 
 @media(max-width:800px){
 
@@ -618,5 +668,9 @@ footer,
         rgba(5,20,13,.35)
       ) !important;
   }
+
+  body::after{
+    filter:blur(38px);
+    animation-duration:22s;
+  }
 }
-?v=999

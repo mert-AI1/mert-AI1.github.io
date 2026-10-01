@@ -1,7 +1,18 @@
 const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });
-},{threshold:.12, rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal,.reveal-right').forEach(el=>observer.observe(el));
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{
+  threshold: 0.05,
+  rootMargin: '0px 0px -100px 0px'
+});
+
+document.querySelectorAll('.reveal,.reveal-right').forEach(el=>{
+  observer.observe(el);
+});
 
 const toggle=document.querySelector('.menu-toggle');
 const nav=document.querySelector('.nav');

@@ -763,3 +763,14 @@ footer{
   display:none !important;
   content:none !important;
 }
+@media (min-width: 801px){
+  .hero-quote{
+    top: 3% !important;
+  }
+}
+
+@media (max-width: 800px){
+  .hero-quote{
+    top: 3% !important;
+  }
+}

@@ -75,10 +75,6 @@ input{
   font-size:16px;
 }
 
-input:focus{
-  border-color:#f5e6b8;
-}
-
 button{
   width:100%;
   padding:15px;
@@ -92,14 +88,12 @@ button{
   background:linear-gradient(90deg,#b99a55,#f5e6a8,#b99a55);
 }
 
-button:active{
-  transform:scale(.98);
-}
-
 #sonuc{
   margin-top:18px;
   min-height:20px;
   font-size:14px;
+  line-height:1.5;
+  word-break:break-word;
 }
 
 .back{
@@ -124,7 +118,7 @@ button:active{
     Selçuk Hukuk &amp; Danışmanlık
   </div>
 
-  <form onsubmit="return girisYap();">
+  <form id="loginForm">
 
     <label for="email">E-posta</label>
 
@@ -165,58 +159,80 @@ button:active{
 
 <script>
 
-const db = supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
-);
+const sonuc = document.getElementById("sonuc");
 
-async function girisYap(){
+document.getElementById("loginForm").addEventListener("submit", async function(e){
 
-  const email =
-    document.getElementById("email").value.trim();
-
-  const password =
-    document.getElementById("password").value;
-
-  const sonuc =
-    document.getElementById("sonuc");
+  e.preventDefault();
 
   sonuc.textContent = "Giriş kontrol ediliyor...";
   sonuc.style.color = "#d8c6a0";
 
-  const { data, error } =
-    await db.auth.signInWithPassword({
-      email: email,
-      password: password
-    });
+  try {
 
-  if(error){
+    if(typeof supabase === "undefined"){
+      throw new Error("Supabase kütüphanesi yüklenmedi.");
+    }
+
+    if(typeof SUPABASE_URL === "undefined"){
+      throw new Error("SUPABASE_URL bulunamadı. supabase-config.js kontrol edilmeli.");
+    }
+
+    if(typeof SUPABASE_ANON_KEY === "undefined"){
+      throw new Error("SUPABASE_ANON_KEY bulunamadı. supabase-config.js kontrol edilmeli.");
+    }
+
+    const db = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+
+    const email =
+      document.getElementById("email").value.trim();
+
+    const password =
+      document.getElementById("password").value;
+
+    const { data, error } =
+      await db.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+    if(error){
+      sonuc.textContent =
+        "❌ " + error.message;
+      sonuc.style.color = "#ff6b6b";
+      return;
+    }
+
+    if(data && data.session){
+
+      sonuc.textContent =
+        "✅ Giriş başarılı! Panel açılıyor...";
+      sonuc.style.color = "#7cff9b";
+
+      setTimeout(function(){
+        window.location.href = "admin-panel.html";
+      },700);
+
+      return;
+    }
 
     sonuc.textContent =
-      "❌ E-posta veya şifre hatalı.";
+      "❌ Oturum oluşturulamadı.";
+    sonuc.style.color = "#ff6b6b";
+
+  } catch(error){
+
+    sonuc.textContent =
+      "❌ Teknik hata: " + error.message;
 
     sonuc.style.color = "#ff6b6b";
 
-    return false;
   }
 
-  if(data.session){
-
-    sonuc.textContent =
-      "✅ Giriş başarılı!";
-
-    sonuc.style.color = "#7cff9b";
-
-    setTimeout(function(){
-
-      window.location.href =
-        "admin-panel.html";
-
-    },500);
-  }
-
-  return false;
-}
+});
 
 </script>
 

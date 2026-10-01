@@ -22,12 +22,9 @@ const db = supabase.createClient(
 
 async function testEt(){
 
-  const { data, error } = await db
-    .from("site_icerigi")
-    .select("avukat_adi,site_basligi,aciklama,uluslararasi")
-    .limit(1)
-    .single();
-
+ const { data, error } = await db
+  .from("site_icerigi")
+  .select("avukat_adi,site_basligi,aciklama,uluslararasi");
   if(error){
     document.getElementById("sonuc").innerHTML =
       "❌ HATA: " + error.message;

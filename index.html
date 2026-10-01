@@ -74,7 +74,21 @@
       <a href="#online">Online Danışmanlık</a><a href="#iletisim">İletişim</a>
     </nav>
   </header>
+<!-- ADMIN MENÜSÜ -->
+<div class="admin-menu-panel" id="adminMenuPanel">
+  <div class="admin-menu-title">YÖNETİM</div>
 
+  <a href="admin.html" class="admin-menu-link">
+    <span class="admin-lock">🔒</span>
+
+    <span>
+      <strong>ADMIN ALANI</strong>
+      <small>Yönetici girişi</small>
+    </span>
+
+    <b>→</b>
+  </a>
+</div>
   <main>
     <section class="hero" id="anasayfa">
       <div class="hero-orbit orbit-one"></div>
@@ -350,6 +364,74 @@
   }
 })();
 </script>
+<style>
+.admin-menu-panel{
+  position:fixed;
+  top:0;
+  right:0;
+  width:320px;
+  max-width:85%;
+  padding:100px 25px 25px;
+  background:#0d0b0d;
+  border-left:1px solid #ff4444;
+  border-bottom:1px solid #ff4444;
+  box-shadow:0 0 35px rgba(255,0,0,.25);
+  z-index:9998;
+  transform:translateY(-110%);
+  transition:.5s ease;
+}
 
+.admin-menu-panel.open{
+  transform:translateY(0);
+}
+
+.admin-menu-title{
+  color:#d8c6a0;
+  font-family:Montserrat,sans-serif;
+  font-size:11px;
+  letter-spacing:4px;
+  margin-bottom:20px;
+}
+
+.admin-menu-link{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:18px;
+  color:white;
+  text-decoration:none;
+  border:1px solid #ff4444;
+  background:rgba(255,0,0,.08);
+}
+
+.admin-lock{
+  font-size:22px;
+}
+
+.admin-menu-link strong{
+  display:block;
+  color:#ff5555;
+  font-family:Montserrat,sans-serif;
+  font-size:13px;
+}
+
+.admin-menu-link small{
+  display:block;
+  color:#aaa;
+  margin-top:5px;
+}
+
+.admin-menu-link b{
+  margin-left:auto;
+  color:#ff5555;
+  font-size:20px;
+}
+</style>
+
+<script>
+document.querySelector(".menu-toggle").addEventListener("click",function(){
+  document.getElementById("adminMenuPanel").classList.toggle("open");
+});
+</script>
 </body>
 </html>

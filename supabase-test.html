@@ -24,9 +24,9 @@ async function testEt(){
 
   const { data, error } = await db
     .from("site_icerigi")
-    .select("*")
+    .select("avukat_adi,site_basligi,aciklama,uluslararasi")
     .limit(1)
-.single();
+    .single();
 
   if(error){
     document.getElementById("sonuc").innerHTML =
@@ -38,9 +38,10 @@ async function testEt(){
     "✅ BAĞLANTI BAŞARILI<br><br>" +
     "Avukat: " + data.avukat_adi + "<br>" +
     "Başlık: " + data.site_basligi + "<br>" +
-    "Açıklama: " + data.aciklama;
+    "Açıklama: " + data.aciklama + "<br>" +
+    "Uluslararası: " + data.uluslararasi;
 }
-
+ 
 testEt();
 </script>
 

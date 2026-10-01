@@ -151,6 +151,12 @@ textarea{
   margin-top:15px;
   display:none;
 }
+
+.error{
+  color:#ff6b6b;
+  margin-top:15px;
+  display:none;
+}
 </style>
 </head>
 
@@ -211,8 +217,6 @@ textarea{
 </div>
 
 
-<!-- SITE İÇERİĞİ PENCERESİ -->
-
 <div class="modal" id="icerikModal">
 
   <div class="modal-box">
@@ -240,63 +244,144 @@ textarea{
       ✅ Bilgiler kaydedildi.
     </div>
 
+    <div class="error" id="hata"></div>
+
   </div>
 
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+
 <script>
 
-function siteIcerigiAc(){
+const db = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
 
-  document.getElementById("icerikModal").style.display="block";
 
-  document.getElementById("avukatAdi").value =
-    localStorage.getItem("avukatAdi") || "Bahar Selçuk";
+async function siteIcerigiAc(){
 
-  document.getElementById("siteBasligi").value =
-    localStorage.getItem("siteBasligi") || "SELÇUK HUKUK & DANIŞMANLIK";
+  document.getElementById("icerikModal").style.display = "block";
 
-  document.getElementById("aciklama").value =
-    localStorage.getItem("aciklama") ||
-    "Hukuki Danışmanlık ve Avukatlık Hizmetleri";
+  document.getElementById("kaydedildi").style.display = "none";
+  document.getElementById("hata").style.display = "none";
 
-  document.getElementById("uluslararasi").value =
-    localStorage.getItem("uluslararasi") ||
-    "Hollanda ve Türkiye arası hukuki köprü (Uluslararası Danışmanlık)";
+  const { data, error } = await db
+    .from("site_icerigi")
+    .select("avukat_adi,site_basligi,aciklama,uluslararasi")
+    .limit(1);
+
+  if(error){
+
+    document.getElementById("hata").innerHTML =
+      "❌ Bilgiler alınamadı: " + error.message;
+
+    document.getElementById("hata").style.display = "block";
+
+    return;
+  }
+
+  if(data && data.length > 0){
+
+    document.getElementById("avukatAdi").value =
+      data[0].avukat_adi || "";
+
+    document.getElementById("siteBasligi").value =
+      data[0].site_basligi || "";
+
+    document.getElementById("aciklama").value =
+      data[0].aciklama || "";
+
+    document.getElementById("uluslararasi").value =
+      data[0].uluslararasi || "";
+
+  }
+
 }
 
 
 function modalKapat(){
 
-  document.getElementById("icerikModal").style.display="none";
+  document.getElementById("icerikModal").style.display = "none";
 
 }
 
 
-function kaydet(){
+async function kaydet(){
 
-  localStorage.setItem(
-    "avukatAdi",
-    document.getElementById("avukatAdi").value
-  );
+  document.getElementById("kaydedildi").style.display = "none";
+  document.getElementById("hata").style.display = "none";
 
-  localStorage.setItem(
-    "siteBasligi",
-    document.getElementById("siteBasligi").value
-  );
+  const avukatAdi =
+    document.getElementById("avukatAdi").value.trim();
 
-  localStorage.setItem(
-    "aciklama",
-    document.getElementById("aciklama").value
-  );
+  const siteBasligi =
+    document.getElementById("siteBasligi").value.trim();
 
-  localStorage.setItem(
-    "uluslararasi",
-    document.getElementById("uluslararasi").value
-  );
+  const aciklama =
+    document.getElementById("aciklama").value.trim();
 
-  document.getElementById("kaydedildi").style.display="block";
+  const uluslararasi =
+    document.getElementById("uluslararasi").value.trim();
+
+
+  const { data: mevcut, error: okumaHatasi } = await db
+    .from("site_icerigi")
+    .select("avukat_adi,site_basligi,aciklama,uluslararasi")
+    .limit(1);
+
+
+  if(okumaHatasi){
+
+    document.getElementById("hata").innerHTML =
+      "❌ Supabase okuma hatası: " + okumaHatasi.message;
+
+    document.getElementById("hata").style.display = "block";
+
+    return;
+  }
+
+
+  if(!mevcut || mevcut.length === 0){
+
+    document.getElementById("hata").innerHTML =
+      "❌ Supabase tablosunda kayıt bulunamadı.";
+
+    document.getElementById("hata").style.display = "block";
+
+    return;
+  }
+
+
+  const eskiAvukatAdi = mevcut[0].avukat_adi;
+
+
+  const { error: guncellemeHatasi } = await db
+    .from("site_icerigi")
+    .update({
+      avukat_adi: avukatAdi,
+      site_basligi: siteBasligi,
+      aciklama: aciklama,
+      uluslararasi: uluslararasi
+    })
+    .eq("avukat_adi", eskiAvukatAdi);
+
+
+  if(guncellemeHatasi){
+
+    document.getElementById("hata").innerHTML =
+      "❌ Kaydetme hatası: " + guncellemeHatasi.message;
+
+    document.getElementById("hata").style.display = "block";
+
+    return;
+  }
+
+
+  document.getElementById("kaydedildi").style.display = "block";
 
 }
 

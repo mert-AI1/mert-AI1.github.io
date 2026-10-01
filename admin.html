@@ -146,6 +146,21 @@
     </a>
 
   </div>
+<script>
+document.querySelector("form").addEventListener("submit", function(e) {
+  e.preventDefault();
 
+  const kullanici = document.getElementById("username").value;
+  const sifre = document.getElementById("password").value;
+
+  if (kullanici === "admin" && sifre === "123456") {
+    alert("Giriş başarılı!");
+    window.location.href = "admin-panel.html";
+  } else {
+    alert("Kullanıcı adı veya şifre hatalı!");
+  }
+});
+</script>
+  
 </body>
 </html>

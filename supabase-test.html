@@ -25,8 +25,8 @@ async function testEt(){
   const { data, error } = await db
     .from("site_icerigi")
     .select("*")
-    .eq("id", 1)
-    .single();
+    .limit(1)
+.single();
 
   if(error){
     document.getElementById("sonuc").innerHTML =
